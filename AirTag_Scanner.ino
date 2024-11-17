@@ -19,6 +19,8 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
       // raw data
       uint8_t* payLoad = advertisedDevice.getPayload();
       size_t payLoadLength = advertisedDevice.getPayloadLength();
+      
+      if (payLoadLength < 4) return ;
 
       // searches both "1E FF 4C 00" and "4C 00 12 19" as the payload can differ slightly
       bool patternFound = false;
